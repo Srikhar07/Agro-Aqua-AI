@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='crop_recommendation.css') }}">
+    <title>Crop Recommendation | AgroAqua AI</title>
+</head>
+<body>
+    <div class="page_wrap">
+        <div class="page_card">
+            <div class="top_bar">
+                <a href="/dashboard">← Back</a>
+            </div>
+            <h1>Crop Recommendation</h1>
+            <p class="subtext">Use the same feature order as the notebook: N, P, K, temperature, humidity, ph, rainfall.</p>
+
+            <form method="POST">
+                <label>Nitrogen (N)</label>
+                <input type="number" step="any" name="nitrogen" placeholder="Nitrogen (N)" required>
+                <label>Phosphorus (P)</label>
+                <input type="number" step="any" name="phosphorus" placeholder="Phosphorus (P)" required>
+                <label>Potassium (K)</label>
+                <input type="number" step="any" name="potassium" placeholder="Potassium (K)" required>
+                <label>Temperature</label>
+                <input type="number" step="any" name="temperature" placeholder="Temperature" required>
+                <label>Humidity</label>
+                <input type="number" step="any" name="humidity" placeholder="Humidity" required>
+                <label>pH</label>
+                <input type="number" step="any" name="ph" placeholder="pH" required>
+                <label>Rainfall</label>
+                <input type="number" step="any" name="rainfall" placeholder="Rainfall" required>
+                <button type="submit">Predict</button>
+            </form>
+
+            {% if prediction is not none %}
+            <div class="result_box">
+                <h2>Prediction Result</h2>
+                <p>{{ prediction }}</p>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+</body>
+</html>

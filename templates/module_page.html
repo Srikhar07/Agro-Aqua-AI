@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='dashboard.css') }}">
+    <title>{{ title }} | Agro-Aqua AI</title>
+</head>
+<body>
+<div class="simple_page">
+    <div class="simple_box wide_box">
+        <h1>{{ title }}</h1>
+        <p>{{ description }}</p>
+
+        <form method="POST">
+            <label>Demo Result</label>
+            <input type="text" name="result" placeholder="Type a sample result to save in history">
+            <button type="submit">Save Prediction</button>
+        </form>
+
+        <a href="/dashboard">Back to Dashboard</a>
+    </div>
+</div>
+</body>
+</html>

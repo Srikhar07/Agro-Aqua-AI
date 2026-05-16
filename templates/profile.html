@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='dashboard.css') }}">
+    <title>Profile | Agro-Aqua AI</title>
+</head>
+<body>
+<div class="simple_page">
+    <div class="simple_box">
+        <h1>Profile</h1>
+        <p><strong>Name:</strong> {{ user.name }}</p>
+        <p><strong>Email:</strong> {{ user.email }}</p>
+        <p><strong>Phone:</strong> {{ user.phone }}</p>
+        <p><strong>Age:</strong> {{ user.age }}</p>
+        <p><strong>Place:</strong> {{ user.place }}</p>
+        <p><strong>Joined:</strong> {{ user.created_at }}</p>
+
+        {% if user.qr_image %}
+        <div class="qr_section">
+            <h3>Your QR Code</h3>
+            <img src="{{ user.qr_image }}" alt="User QR Code">
+        </div>
+        {% endif %}
+
+        <a href="/dashboard">Back to Dashboard</a>
+    </div>
+</div>
+</body>
+</html>

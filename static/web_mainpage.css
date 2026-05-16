@@ -1,0 +1,62 @@
+body{
+    margin: 0;
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+     background-image: url("../static/main_bg.png");
+}
+
+.container{
+    padding: 30px 20px;
+}
+
+.container h1{
+    text-align: center;
+    font-size: 35px;
+}
+
+p{
+    text-align: center;
+    font-size: large;
+}
+
+.content{
+    max-width: 900px;
+    margin: 0 auto;
+    padding-top: 20px;
+}
+
+.container p{
+    font-size: 18px;
+    text-align: center;
+    max-width: 900px;
+    margin: 0 auto;
+    line-height: 1.8;
+    padding: 20px;
+}
+
+.logsign_buttons{
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 0px;
+}
+
+.logsign_buttons button{
+    width: 160px;
+    height: 50px;
+    border-radius: 12px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.footer_line{
+    width: 95%;
+    margin-top: auto;
+}
+
+footer{
+    text-align: center;
+    padding: 15px 0;
+}

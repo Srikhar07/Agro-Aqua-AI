@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='login_page.css') }}">
+    <title>Login | Agro-Aqua AI</title>
+</head>
+<body>
+    <div class="auth_container">
+        <div class="auth_box">
+            <h1>Agro-Aqua AI</h1>
+            <p>Intelligent Agriculture and Aquaculture System</p>
+
+            {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                    <div class="flash_box">{{ messages[0] }}</div>
+                {% endif %}
+            {% endwith %}
+
+            <form action="/login" method="POST">
+                <div class="input_group">
+                    <label>Email</label>
+                    <input type="email" name="username" placeholder="Enter email" required>
+                </div>
+
+                <div class="input_group">
+                    <label>Password</label>
+                    <input type="password" name="password" placeholder="Enter password" required>
+                </div>
+
+                <button type="submit">Login</button>
+            </form>
+
+            <div class="bottom_text">
+                <p>Don't have an account? <a href="/signup">Sign Up</a></p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

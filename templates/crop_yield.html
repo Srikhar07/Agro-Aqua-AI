@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='crop_yield.css') }}">
+    <title>Crop Yield Prediction | AgroAqua AI</title>
+</head>
+<body>
+    <div class="page_wrap">
+        <div class="page_card">
+            <div class="top_bar">
+                <a href="/dashboard">← Back</a>
+            </div>
+            <h1>Crop Yield Prediction</h1>
+            <p class="subtext">Use the notebook column order exactly: Rain Fall, Fertilizer, Temperatue, Nitrogen, Phosphorus, Potassium.</p>
+
+            <form method="POST">
+                <label>Rain Fall (mm)</label>
+                <input type="number" step="any" name="rain_fall" placeholder="Rain Fall (mm)" required>
+                <label>Fertilizer</label>
+                <input type="number" step="any" name="fertilizer" placeholder="Fertilizer" required>
+                <label>Temperatue</label>
+                <input type="number" step="any" name="temperatue" placeholder="Temperatue" required>
+                <label>Nitrogen (N)</label>
+                <input type="number" step="any" name="nitrogen" placeholder="Nitrogen (N)" required>
+                <label>Phosphorus (P)</label>
+                <input type="number" step="any" name="phosphorus" placeholder="Phosphorus (P)" required>
+                <label>Potassium (K)</label>
+                <input type="number" step="any" name="potassium" placeholder="Potassium (K)" required>
+                <button type="submit">Predict</button>
+            </form>
+
+            {% if prediction is not none %}
+            <div class="result_box">
+                <h2>Prediction Result</h2>
+                <p>{{ prediction }}</p>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+</body>
+</html>

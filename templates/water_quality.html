@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='water_quality.css') }}">
+    <title>Water Quality Prediction | AgroAqua AI</title>
+</head>
+<body>
+    <div class="page_wrap">
+        <div class="page_card">
+            <div class="top_bar">
+                <a href="/dashboard">← Back</a>
+            </div>
+            <h1>Water Quality Prediction</h1>
+            <p class="subtext">Use the exact 14 numeric inputs from the WQD notebook.</p>
+
+            <form method="POST">
+                <label>Temp</label>
+                <input type="number" step="any" name="temp" placeholder="Temp" required>
+                <label>Turbidity (cm)</label>
+                <input type="number" step="any" name="turbidity" placeholder="Turbidity (cm)" required>
+                <label>DO (mg/L)</label>
+                <input type="number" step="any" name="do_mg_l" placeholder="DO (mg/L)" required>
+                <label>BOD (mg/L)</label>
+                <input type="number" step="any" name="bod" placeholder="BOD (mg/L)" required>
+                <label>CO2</label>
+                <input type="number" step="any" name="co2" placeholder="CO2" required>
+                <label>pH</label>
+                <input type="number" step="any" name="ph" placeholder="pH" required>
+                <label>Alkalinity (mg L-1)</label>
+                <input type="number" step="any" name="alkalinity" placeholder="Alkalinity (mg L-1)" required>
+                <label>Hardness (mg L-1)</label>
+                <input type="number" step="any" name="hardness" placeholder="Hardness (mg L-1)" required>
+                <label>Calcium (mg L-1)</label>
+                <input type="number" step="any" name="calcium" placeholder="Calcium (mg L-1)" required>
+                <label>Ammonia (mg L-1)</label>
+                <input type="number" step="any" name="ammonia" placeholder="Ammonia (mg L-1)" required>
+                <label>Nitrite (mg L-1)</label>
+                <input type="number" step="any" name="nitrite" placeholder="Nitrite (mg L-1)" required>
+                <label>Phosphorus (mg L-1)</label>
+                <input type="number" step="any" name="phosphorus" placeholder="Phosphorus (mg L-1)" required>
+                <label>H2S (mg L-1)</label>
+                <input type="number" step="any" name="h2s" placeholder="H2S (mg L-1)" required>
+                <label>Plankton (No. L-1)</label>
+                <input type="number" step="any" name="plankton" placeholder="Plankton (No. L-1)" required>
+                <button type="submit">Predict</button>
+            </form>
+
+            {% if prediction is not none %}
+            <div class="result_box">
+                <h2>Prediction Result</h2>
+                <p>{{ prediction }}</p>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+</body>
+</html>

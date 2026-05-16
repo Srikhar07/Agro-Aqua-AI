@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='dashboard.css') }}">
+    <title>AgroAqua Dashboard</title>
+</head>
+<body>
+<div class="user_dashboard">
+    <aside class="side_content">
+        <h2>Agro-Aqua AI</h2>
+
+        <div class="menu_section">
+            <h3>Agriculture</h3>
+            <a href="/crop-recommendation">Crop Recommendation</a>
+            <a href="/crop-yield">Crop Yield Prediction</a>
+            <a href="/crop-water-test">Crop Water Test Prediction</a>
+            <a href="/plant-disease">Plant Disease Detection</a>
+        </div>
+
+        <div class="menu_section">
+            <h3>Aquaculture</h3>
+            <a href="/fish-life">Fish Life Prediction</a>
+            <a href="/water-quality">Water Quality Prediction</a>
+        </div>
+
+        <div class="menu_section">
+            <h3>Records</h3>
+            <a href="/history">Prediction History</a>
+            <a href="/reports">Reports</a>
+            <a href="/profile">Profile</a>
+            <a href="/scan-qr">Scan QR</a>
+        </div>
+
+        <a href="/logout" class="logout_btn">Logout</a>
+    </aside>
+
+    <main class="main_content">
+        <div class="top_box">
+            <h1>Welcome Back, {{ username }}</h1>
+            <p>Manage your agriculture and aquaculture predictions from one centralized dashboard.</p>
+        </div>
+
+        <div class="stats_grid">
+            <div class="stats_card">
+                <h2>{{ total_predictions }}</h2>
+                <p>Total Predictions</p>
+            </div>
+
+            <div class="stats_card">
+                <h2>{{ reports_generated }}</h2>
+                <p>Reports Generated</p>
+            </div>
+        </div>
+
+        <div class="section_title">
+            <h2>AI Prediction Modules</h2>
+        </div>
+
+        <div class="card_grid">
+            <div class="card">
+                <h3>Crop Recommendation</h3>
+                <p>Recommend the best crop based on soil and environmental conditions.</p>
+                <a href="/crop-recommendation"><button>Open Module</button></a>
+            </div>
+
+            <div class="card">
+                <h3>Crop Yield Prediction</h3>
+                <p>Predict expected crop yield using intelligent AI regression models.</p>
+                <a href="/crop-yield"><button>Open Module</button></a>
+            </div>
+
+            <div class="card">
+                <h3>Crop Water Test Prediction</h3>
+                <p>Analyze water suitability for crop growth and farming conditions.</p>
+                <a href="/crop-water-test"><button>Open Module</button></a>
+            </div>
+
+            <div class="card">
+                <h3>Plant Disease Detection</h3>
+                <p>Detect plant diseases using Deep Learning image classification.</p>
+                <a href="/plant-disease"><button>Open Module</button></a>
+            </div>
+
+            <div class="card">
+                <h3>Fish Life Prediction</h3>
+                <p>Predict fish survival probability using water quality parameters.</p>
+                <a href="/fish-life"><button>Open Module</button></a>
+            </div>
+
+            <div class="card">
+                <h3>Water Quality Prediction</h3>
+                <p>Analyze pond water conditions for aquaculture management.</p>
+                <a href="/water-quality"><button>Open Module</button></a>
+            </div>
+        </div>
+
+        <div class="history_box">
+            <h2>Recent Predictions</h2>
+            <table>
+                <tr>
+                    <th>Module</th>
+                    <th>Result</th>
+                    <th>Date</th>
+                </tr>
+
+                {% if recent_predictions %}
+                    {% for item in recent_predictions %}
+                    <tr>
+                        <td>{{ item['module'] }}</td>
+                        <td>{{ item['result'] }}</td>
+                        <td>{{ item['created_at'] }}</td>
+                    </tr>
+                    {% endfor %}
+                {% else %}
+                    <tr><td colspan="3" style="text-align:center;">No Predictions Yet</td></tr>
+                {% endif %}
+            </table>
+        </div>
+    </main>
+</div>
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='fish_life.css') }}">
+    <title>Fish Life Prediction | AgroAqua AI</title>
+</head>
+<body>
+    <div class="page_wrap">
+        <div class="page_card">
+            <div class="top_bar">
+                <a href="/dashboard">← Back</a>
+            </div>
+            <h1>Fish Life Prediction</h1>
+            <p class="subtext">Use the 11 numeric inputs from the notebook after dropping Date, Time, and label.</p>
+
+            <form method="POST">
+                <label>Nitrate (PPM)</label>
+                <input type="number" step="any" name="nitrate" placeholder="Nitrate (PPM)" required>
+                <label>PH</label>
+                <input type="number" step="any" name="ph" placeholder="PH" required>
+                <label>Ammonia (mg/l)</label>
+                <input type="number" step="any" name="ammonia" placeholder="Ammonia (mg/l)" required>
+                <label>TEMP</label>
+                <input type="number" step="any" name="temp" placeholder="TEMP" required>
+                <label>DO</label>
+                <input type="number" step="any" name="do" placeholder="DO" required>
+                <label>Turbidity</label>
+                <input type="number" step="any" name="turbidity" placeholder="Turbidity" required>
+                <label>Manganese (mg/l)</label>
+                <input type="number" step="any" name="manganese" placeholder="Manganese (mg/l)" required>
+                <label>Pressure</label>
+                <input type="number" step="any" name="pressure" placeholder="Pressure" required>
+                <label>tempC</label>
+                <input type="number" step="any" name="tempc" placeholder="tempC" required>
+                <label>Humidity</label>
+                <input type="number" step="any" name="humidity" placeholder="Humidity" required>
+                <label>Wind Speed Kmph</label>
+                <input type="number" step="any" name="windspeed" placeholder="Wind Speed Kmph" required>
+                <button type="submit">Predict</button>
+            </form>
+
+            {% if prediction is not none %}
+            <div class="result_box">
+                <h2>Prediction Result</h2>
+                <p>{{ prediction }}</p>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+</body>
+</html>

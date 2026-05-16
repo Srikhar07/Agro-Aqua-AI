@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prediction History | Agro-Aqua AI</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: 'Segoe UI', sans-serif; background: #f4f6f0; min-height: 100vh; }
+        .container { max-width: 960px; margin: 40px auto; padding: 0 20px; }
+        h1 { font-size: 2rem; color: #2d6a2d; margin-bottom: 24px; border-bottom: 3px solid #2d6a2d; padding-bottom: 10px; }
+        table { width: 100%; border-collapse: collapse; background: #fff; border-radius: 10px; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
+        thead { background: #2d6a2d; color: white; }
+        thead th { padding: 14px 16px; text-align: left; font-size: 0.95rem; }
+        tbody tr { border-bottom: 1px solid #eee; transition: background 0.2s; }
+        tbody tr:hover { background: #f9fdf9; }
+        tbody tr:last-child { border-bottom: none; }
+        td { padding: 12px 16px; color: #333; font-size: 0.92rem; vertical-align: top; }
+        .module-cell { font-weight: 600; color: #2d6a2d; }
+        .date-cell { color: #888; white-space: nowrap; }
+        .result-cell { color: #222; }
+        .inputs-cell { color: #666; font-size: 0.85rem; max-width: 300px; word-break: break-word; }
+        .empty-state { text-align: center; color: #888; padding: 60px 20px; font-size: 1.1rem; }
+        .back-btn {
+            display: inline-block; margin-bottom: 20px; padding: 8px 20px;
+            background: #2d6a2d; color: white; text-decoration: none;
+            border-radius: 6px; font-size: 0.9rem;
+        }
+        .back-btn:hover { background: #1e4d1e; }
+    </style>
+</head>
+<body>
+<div class="container">
+    <a href="/dashboard" class="back-btn">← Back to Dashboard</a>
+    <h1>📜 Prediction History</h1>
+
+    {% if history_data %}
+    <table>
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Module</th>
+                <th>Result</th>
+                <th>Inputs</th>
+                <th>Date &amp; Time</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for h in history_data %}
+            <tr>
+                <td>{{ loop.index }}</td>
+                <td class="module-cell">{{ h['module'] }}</td>
+                <td class="result-cell">{{ h['result'] }}</td>
+                <td class="inputs-cell">{{ h['inputs'] }}</td>
+                <td class="date-cell">🕐 {{ h['created_at'] }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% else %}
+        <div class="empty-state">No prediction history yet. Try a module from the dashboard.</div>
+    {% endif %}
+</div>
+</body>
+</html>

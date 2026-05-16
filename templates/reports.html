@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reports | Agro-Aqua AI</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: 'Segoe UI', sans-serif; background: #f4f6f0; min-height: 100vh; }
+        .container { max-width: 960px; margin: 40px auto; padding: 0 20px; }
+        h1 { font-size: 2rem; color: #2d6a2d; margin-bottom: 24px; border-bottom: 3px solid #2d6a2d; padding-bottom: 10px; }
+        .report-card {
+            background: #fff;
+            border-radius: 10px;
+            padding: 20px 24px;
+            margin-bottom: 18px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            border-left: 5px solid #2d6a2d;
+        }
+        .report-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        .module-badge {
+            background: #2d6a2d;
+            color: white;
+            padding: 4px 14px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+        .date-label {
+            color: #888;
+            font-size: 0.85rem;
+        }
+        .result-text {
+            font-size: 1.05rem;
+            color: #333;
+            font-weight: 500;
+            margin-bottom: 12px;
+        }
+        .qr-section { margin-top: 10px; }
+        .qr-section img { width: 120px; height: 120px; border: 2px solid #ddd; border-radius: 8px; }
+        .empty-state {
+            text-align: center;
+            color: #888;
+            padding: 60px 20px;
+            font-size: 1.1rem;
+        }
+        .back-btn {
+            display: inline-block;
+            margin-bottom: 20px;
+            padding: 8px 20px;
+            background: #2d6a2d;
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-size: 0.9rem;
+        }
+        .back-btn:hover { background: #1e4d1e; }
+    </style>
+</head>
+<body>
+<div class="container">
+    <a href="/dashboard" class="back-btn">← Back to Dashboard</a>
+    <h1>📋 Reports</h1>
+
+    {% if reports_data %}
+        {% for r in reports_data %}
+        <div class="report-card">
+            <div class="report-header">
+                <span class="module-badge">{{ r['module'] }}</span>
+                <span class="date-label">🕐 {{ r['created_at'] }}</span>
+            </div>
+            <div class="result-text">📊 {{ r['result'] }}</div>
+            {% if r['qr_data'] %}
+            <div class="qr-section">
+                <small style="color:#888; display:block; margin-bottom:6px;">QR Code:</small>
+                <img src="{{ r['qr_data'] }}" alt="QR Code">
+            </div>
+            {% endif %}
+        </div>
+        {% endfor %}
+    {% else %}
+        <div class="empty-state">No reports yet. Run a prediction to generate reports.</div>
+    {% endif %}
+</div>
+</body>
+</html>
